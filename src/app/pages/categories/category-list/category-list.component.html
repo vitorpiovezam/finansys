@@ -1,3 +1,39 @@
-<p>
-  category-list works!
-</p>
+<nav class="mb-5">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a routerLink="/">Home</a>
+    </li>
+    <li class="breadcrumb-item active">
+      Categorias
+  </ol>
+</nav>
+
+<div class="row">
+  <div class="col">
+    <h1 class="h2 border-left pl-2">
+      Categorias
+    </h1>
+  </div>
+  <div class="col">
+    <a class="btn btn-success nav-light float-right" routerLink="new">+ Nova Categoria</a>
+  </div>
+</div>
+
+<table class="table table-hover table-striped">
+  <thead>
+    <tr >
+      <th>Categoria</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <td>
+      <strong>Lazer</strong><br>
+      <small>Futebol, praia, cinema etc.</small>
+    </td>
+    <td>
+      <a class="btn btn-primary mr-2" [routerLink]="[ 'edit', 12 ]">Editar</a>
+      <a class="btn btn-danger" [routerLink]="[ 'edit', 11 ]">Excluir</a>
+    </td>
+  </tbody>
+</table>
