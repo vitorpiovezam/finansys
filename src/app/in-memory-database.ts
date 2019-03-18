@@ -5,27 +5,27 @@ export class InMemoryDatabase implements InMemoryDbService {
     createDb() {
         const categories: Category[] = [
             {
-                id: 5,
+                id: 1,
                 name: 'Lazer',
                 description: 'Parque, cinema'
             },
             {
-                id: 5,
-                name: 'Lazer',
-                description: 'Parque, cinema'
+                id: 2,
+                name: 'Alimentação',
+                description: 'Almoço, Pizza'
             },
             {
-                id: 5,
-                name: 'Lazer',
-                description: 'Parque, cinema'
+                id: 3,
+                name: 'Saude',
+                description: 'Consultas, exames, remédio'
             },
             {
-                id: 5,
+                id: 4,
                 name: 'Lazer',
                 description: 'Parque, cinema'
             }
         ];
 
-        return categories ;
+        return { categories };
     }
 }
