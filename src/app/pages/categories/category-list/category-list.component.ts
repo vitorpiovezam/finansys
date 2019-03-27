@@ -14,21 +14,19 @@ export class CategoryListComponent implements OnInit {
 
   ngOnInit() {
     this.categoryService.getAll().subscribe(
-      (categories) => this.categories = categories,
+      categories => this.categories = categories,
       error => alert('List Error')
     );
   }
 
-  deleteCategory(category) {
+  deleteCategory(category: any) {
     const mustDelete = confirm('Deseja realmente exluir este item ?');
 
     if (mustDelete) {
       this.categoryService.delete(category.id).subscribe(
-        () => this.categories = this.categories.filter(element => element != category),
+        () => this.categories = this.categories.filter(element => element !== category),
         () => alert('Error')
       );
     }
   }
-  
-
 }
