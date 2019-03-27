@@ -33,7 +33,7 @@
           <small>{{ category.description }}</small>
       </td>
       <td>
-        <a class="btn btn-primary mr-2" [routerLink]="[ '/edit', category.id ]">Editar</a>
+        <a class="btn btn-primary mr-2" [routerLink]="[ 'edit', category.id ]">Editar</a>
         <a (click)="deleteCategory(category)" class="btn btn-danger">Deletar</a>
       </td>
     </tr>
