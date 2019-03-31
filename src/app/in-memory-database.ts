@@ -21,8 +21,13 @@ export class InMemoryDatabase implements InMemoryDbService {
             },
             {
                 id: 4,
-                name: 'Lazer',
-                description: 'Parque, cinema'
+                name: 'Transporte',
+                description: 'Onibus, combustivel, uber'
+            },
+            {
+                id: 5,
+                name: 'Casa',
+                description: 'Supermercado, limpeza, manutenção'
             }
         ];
 
