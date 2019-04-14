@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-
 import { Observable, throwError } from 'rxjs';
 import { map, catchError, flatMap } from 'rxjs/operators';
 
@@ -48,7 +47,6 @@ export class CategoryService {
 
   delete(id: number): Observable<Category> {
     const url = this.apiPath + '/' + id;
-
     return this.http.delete(url).pipe(
       catchError(this.handleError),
       map(this.jsonDataToCategory)
