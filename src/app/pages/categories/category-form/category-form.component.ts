@@ -110,7 +110,7 @@ export class CategoryFormComponent implements OnInit, AfterContentChecked {
     toastr.success(message);
     this.router.navigateByUrl('categories', {skipLocationChange: true})
     .then(
-      () => this.router.navigate(['categories', category.id, 'edit'])
+      () => this.router.navigate(['categories', 'edit', category.id])
     );
   }
 

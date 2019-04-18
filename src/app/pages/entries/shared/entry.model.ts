@@ -9,16 +9,26 @@ export class Entry {
         public amount?: string,
         public date?: string,
         public paid?: string,
-        public categoryId?: string,
+        public categoryId?: number,
         public category?: Category,
-    ) {}
+    ) {
+        this.id = id;
+        this.name = name;
+        this.description = description,
+        this.type = type;
+        this.amount = amount;
+        this.date = date;
+        this.paid = paid;
+        this.categoryId = categoryId;
+        this.category = category;
+    }
 
     static types = {
         expense: 'Despesa',
         revenue: 'Receita'
     };
 
-    get paidText(): string {
-        return this.paid ? 'Pago' : 'Pendente';
-    }
+    // get paidText(): string {
+    //     return this.paid ? 'Pago' : 'Pendente';
+    // }
 }

@@ -4,18 +4,18 @@
       <a routerLink="/">Home</a>
     </li>
     <li class="breadcrumb-item active">
-      Categorias
+      Lançamentos
   </ol>
 </nav>
 
 <div class="row">
   <div class="col">
     <h1 class="h2 border-left pl-2">
-      Categorias
+      Lançamentos
     </h1>
   </div>
   <div class="col">
-    <a class="btn btn-success nav-light float-right" routerLink="new">+ Nova Categoria</a>
+    <a class="btn btn-success nav-light float-right" routerLink="new">+ Novo Lançamento</a>
   </div>
 </div>
 
@@ -27,13 +27,15 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let category of categories">
+    <tr *ngFor="let entry of entries">
       <td>
-          <strong>{{ category.name }}</strong><br>
-          <small>{{ category.description }}</small>
+          <strong>{{ entry.name }}</strong><br>
+          <small class="text-success">{{ entry.date }}</small><br>
+          <small>{{ entry.description }}</small><br>
+          <small class="text-danger">{{ entry.category.name }}</small>
       </td>
       <td>
-        <button class="btn btn-primary mr-2" [routerLink]="[ 'edit', category.id ]">Editar</button>
+        <button class="btn btn-primary mr-2" [routerLink]="[ 'edit', entry.id ]">Editar</button>
         <button (click)="deleteCategory(category)" type="button" class="btn btn-danger">Remover</button>
       </td>
     </tr>
