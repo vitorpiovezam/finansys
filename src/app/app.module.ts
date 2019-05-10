@@ -7,9 +7,13 @@ import { AppComponent } from './app.component';
 
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDatabase } from './in-memory-database';
+import { CoreComponent } from './core/core.component';
+import { SharedComponent } from './shared/shared.component';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CoreComponent,
+    SharedComponent
   ],
   imports: [
     BrowserModule,
