@@ -1,6 +1,6 @@
+import { Entry } from './pages/entries/shared/entry.model';
 import { InMemoryDbService } from 'angular-in-memory-web-api';
 import { Category } from './pages/categories/shared/category.model';
-
 export class InMemoryDatabase implements InMemoryDbService {
     createDb() {
         const categories: Category[] = [
@@ -31,6 +31,20 @@ export class InMemoryDatabase implements InMemoryDbService {
             }
         ];
 
-        return { categories };
+        const entries: Entry[] = [
+            {
+                id: 1,
+                name: 'Gás de cozinha',
+                description: 'Para fazer comida',
+                type: 'Despesa',
+                amount: '54,00',
+                date: '21/04/2018',
+                paid: 'Pago',
+                categoryId: categories[4].id,
+                category: categories[4]
+            }
+        ];
+
+        return { categories, entries };
     }
 }

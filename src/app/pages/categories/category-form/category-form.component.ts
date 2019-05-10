@@ -7,7 +7,6 @@ import { switchMap } from 'rxjs/operators';
 
 import toastr from 'toastr';
 import { ActivatedRoute, Router } from '@angular/router';
-import { PARAMETERS } from '@angular/core/src/util/decorators';
 
 @Component({
   selector: 'app-category-form',
@@ -20,7 +19,7 @@ export class CategoryFormComponent implements OnInit, AfterContentChecked {
   categoryForm: FormGroup;
   pageTitle: string;
   serverErrorMessages: string[] = null;
-  submitingForm: false;
+  submittingForm: Boolean = false;
   category: Category = new Category();
 
   constructor(
@@ -38,6 +37,15 @@ export class CategoryFormComponent implements OnInit, AfterContentChecked {
 
   ngAfterContentChecked() {
     this.setPageTitle();
+  }
+
+  submitForm() {
+    this.submittingForm = true;
+    if (this.currentAction === 'new') {
+      this.createCategory();
+    } else {
+      this.updateCategory();
+    }
   }
 
   private setPageTitle() {
@@ -77,4 +85,44 @@ export class CategoryFormComponent implements OnInit, AfterContentChecked {
     }
   }
 
+  private createCategory() {
+    const category: Category = Object.assign(new Category(), this.categoryForm.value);
+    this.categoryService.create(category)
+    .subscribe(
+      category => this.actionsForSuccess(category),
+      error => this.actionsForError(error)
+    );
+  }
+
+  private updateCategory() {
+    const category: Category = Object.assign(new Category(), this.categoryForm.value);
+
+    this.categoryService.update(category)
+    .subscribe(
+      category => this.actionsForSuccess(category),
+      error => this.actionsForError(error)
+    );
+  }
+
+  private actionsForSuccess(category: Category) {
+    const message = `A categoria ${category.name} foi cadastrada com sucesso`;
+
+    toastr.success(message);
+    this.router.navigateByUrl('categories', {skipLocationChange: true})
+    .then(
+      () => this.router.navigate(['categories', 'edit', category.id])
+    );
+  }
+
+  private actionsForError(error: any) {
+    toastr.error('Erro', error);
+    this.submittingForm = false;
+
+    if (error.status ===  422) {
+      this.serverErrorMessages = JSON.parse(error._body).errors;
+    } else {
+      this.serverErrorMessages = ['Falha na comunicação com o servidor'];
+    }
+
+  }
 }
