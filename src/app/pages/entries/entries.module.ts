@@ -4,9 +4,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { EntriesRoutingModule } from './entries-routing.module';
+import { EntryFormComponent } from './entry-form/entry-form.component';
 
 @NgModule({
-  declarations: [EntryListComponent],
+  declarations: [EntryListComponent, EntryFormComponent],
   imports: [
     EntriesRoutingModule,
     SharedModule

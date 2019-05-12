@@ -1,0 +1,52 @@
+<form [formGroup]="entryForm" (submit)="submitForm()">
+
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label>Nome</label><br>
+      <input type="text" class="form-control" formControlName="name">
+    </div>
+
+    <div class="form-group col-md-5">
+      <label>Descrição</label><br>
+      <input type="text" class="form-control" formControlName="description">
+    </div>
+
+    <div class="form-group col-md-3">
+      <label>Tipo</label><br>
+      <button class="btn btn-outline-primary" (click)="entryForm.get('type').setValue('Despesa')"
+        [ngClass]="{'active': entryForm.get('type').value == 'Despesa'}">Despesa</button>
+      <button class="btn btn-outline-primary" (click)="entryForm.get('type').setValue('Receita')"
+        [ngClass]="{'active': entryForm.get('type').value == 'Receita'}">Receita</button>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-3">
+      <label>Valor</label><br>
+      <input [imask]="imaskConfig" type="text" class="form-control" formControlName="amount">
+    </div>
+
+    <div class="form-group col-md-3">
+      <label>Data</label><br>
+      <input class="form-control" type="date" formControlName="date">
+    </div>
+
+    <div class="form-group col-md-3">
+      <label>Situação</label><br>
+      <button class="btn btn-outline-primary" (click)="entryForm.get('paid').setValue(true)"
+        [ngClass]="{'active': entryForm.get('paid').value == true}">Pago</button>
+      <button class="btn btn-outline-primary" (click)="entryForm.get('paid').setValue(false)"
+        [ngClass]="{'active': entryForm.get('paid').value == false}">Pendente</button>
+    </div>
+
+    <div class="form-group col-md-3">
+      <label>Categoria</label><br>
+      <select class="form-control" formControlName="categoryId">
+        <option [value]="category.id" *ngFor="let category of categories">{{ category.name }}</option>
+      </select>
+    </div>
+  </div>
+
+</form>
+
+<button class="btn btn-success" [disabled]="formSubmitting || entryForm.invalid" (click)="submitForm()">Salvar</button>
