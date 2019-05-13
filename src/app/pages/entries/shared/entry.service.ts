@@ -9,7 +9,7 @@ import { Entry } from './entry.model';
 export class EntryService extends BaseResourceService<Entry> {
 
   constructor(protected injector: Injector) {
-    super('api/entries', injector);
+    super('api/entries', injector, Entry.fromJson);
   }
 
 }

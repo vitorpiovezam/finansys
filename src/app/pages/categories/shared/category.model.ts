@@ -11,4 +11,8 @@ export class Category extends BaseResourceModel {
         this.description = description;
     }
 
+    static fromJson(jsonData: any): Category {
+        return Object.assign(new Category(), jsonData);
+    }
+
 }
