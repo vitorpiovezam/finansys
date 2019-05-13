@@ -1,16 +1,5 @@
-<nav class="mb-5">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item">
-      <a routerLink="/">Home</a>
-    </li>
-    <li class="breadcrumb-item">
-      <a routerLink="/categories">Categorias</a>
-    </li>
-    <li class="breadcrumb-item active">
-      <a>Nova Categoria</a>
-    </li>
-  </ol>
-</nav>
+<app-bread-crumb
+[items]="[{text: 'Categoria', link: '/categories'},{text: pageTitle}]"></app-bread-crumb>
 
 <div class="row">
   <div class="col">
