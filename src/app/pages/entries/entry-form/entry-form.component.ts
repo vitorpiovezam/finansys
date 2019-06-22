@@ -1,12 +1,12 @@
-import { Component, OnInit, Injector } from '@angular/core';
-import { Entry } from '../shared/entry.model';
-import { ActivatedRoute, Router } from '@angular/router';
-import { BaseResourceFormComponent } from 'src/app/shared/components/base-resource-form/base-resource-form.component';
-
-import { Category } from '../../categories/shared/category.model';
 import { CategoryService } from './../../categories/shared/category.service';
+import { Component, OnInit, AfterContentChecked, Injector } from '@angular/core';
 import { EntryService } from '../shared/entry.service';
-import { Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Entry } from '../shared/entry.model';
+import { switchMap } from 'rxjs/operators';
+import toastr from 'toastr';
+import { Category } from '../../categories/shared/category.model';
+import { BaseResourceFormComponent } from 'src/app/shared/components/base-resource-form/base-resource-form.component';
 
 @Component({
   selector: 'app-entry-form',
@@ -15,7 +15,8 @@ import { Validators } from '@angular/forms';
 })
 
 export class EntryFormComponent extends BaseResourceFormComponent<Entry> implements OnInit {
-  categories: Category[] = [];
+
+  private categories: Category[] = [];
 
   imaskConfig = {
     mask: Number,
@@ -29,14 +30,16 @@ export class EntryFormComponent extends BaseResourceFormComponent<Entry> impleme
   constructor(
     private entryService: EntryService,
     private categoryService: CategoryService,
-    protected injector: Injector
+    injector: Injector
   ) {
     super(injector, new Entry(), entryService, Entry.fromJson);
   }
 
   ngOnInit() {
     this.getCategories();
+    this.buildResourceForm();
   }
+
 
   private getCategories() {
     this.categoryService.getAll().subscribe(
@@ -56,5 +59,4 @@ export class EntryFormComponent extends BaseResourceFormComponent<Entry> impleme
       categoryId: [null]
     });
   }
-
 }

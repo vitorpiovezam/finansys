@@ -12,13 +12,17 @@ import { BaseResourceFormComponent } from 'src/app/shared/components/base-resour
   styleUrls: ['./category-form.component.css']
 })
 
-export class CategoryFormComponent extends BaseResourceFormComponent<Category> {
+export class CategoryFormComponent extends BaseResourceFormComponent<Category> implements OnInit{
 
   constructor(
-    private categoryService: CategoryService,
-    protected injector: Injector
+    categoryService: CategoryService,
+    injector: Injector
   ) {
     super(injector, new Category(), categoryService, Category.fromJson);
+  }
+
+  ngOnInit() {
+    this.buildResourceForm();
   }
 
   protected buildResourceForm() {
@@ -28,5 +32,4 @@ export class CategoryFormComponent extends BaseResourceFormComponent<Category> {
       description: [null]
     });
   }
-
 }
