@@ -7,6 +7,7 @@ import { flatMap } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
+
 export class EntryService extends BaseResourceService<Entry> {
 
   constructor(
