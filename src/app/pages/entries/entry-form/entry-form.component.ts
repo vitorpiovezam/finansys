@@ -1,10 +1,8 @@
 import { CategoryService } from './../../categories/shared/category.service';
-import { Component, OnInit, AfterContentChecked, Injector } from '@angular/core';
+import { Component, OnInit, Injector } from '@angular/core';
 import { EntryService } from '../shared/entry.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Validators } from '@angular/forms';
 import { Entry } from '../shared/entry.model';
-import { switchMap } from 'rxjs/operators';
-import toastr from 'toastr';
 import { Category } from '../../categories/shared/category.model';
 import { BaseResourceFormComponent } from 'src/app/shared/components/base-resource-form/base-resource-form.component';
 
@@ -16,7 +14,7 @@ import { BaseResourceFormComponent } from 'src/app/shared/components/base-resour
 
 export class EntryFormComponent extends BaseResourceFormComponent<Entry> implements OnInit {
 
-  private categories: Category[] = [];
+  categories: Array<Category>;
 
   imaskConfig = {
     mask: Number,
@@ -38,6 +36,7 @@ export class EntryFormComponent extends BaseResourceFormComponent<Entry> impleme
   ngOnInit() {
     this.getCategories();
     this.buildResourceForm();
+    super.ngOnInit();
   }
 
 

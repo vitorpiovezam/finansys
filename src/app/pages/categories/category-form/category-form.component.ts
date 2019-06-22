@@ -1,12 +1,9 @@
-import { Component, OnInit, AfterContentChecked, Injector } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit, Injector } from '@angular/core';
+import { Validators } from '@angular/forms';
 
 import { CategoryService } from './../shared/category.service';
 import { Category } from './../shared/category.model';
-import { switchMap } from 'rxjs/operators';
 
-import toastr from 'toastr';
-import { ActivatedRoute, Router } from '@angular/router';
 import { BaseResourceFormComponent } from 'src/app/shared/components/base-resource-form/base-resource-form.component';
 
 @Component({
@@ -15,7 +12,7 @@ import { BaseResourceFormComponent } from 'src/app/shared/components/base-resour
   styleUrls: ['./category-form.component.css']
 })
 
-export class CategoryFormComponent extends BaseResourceFormComponent<Category> implements OnInit{
+export class CategoryFormComponent extends BaseResourceFormComponent<Category> implements OnInit {
 
   constructor(
     categoryService: CategoryService,
@@ -26,6 +23,7 @@ export class CategoryFormComponent extends BaseResourceFormComponent<Category> i
 
   ngOnInit() {
     this.buildResourceForm();
+    super.ngOnInit();
   }
 
   protected buildResourceForm() {

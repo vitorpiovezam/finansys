@@ -30,7 +30,6 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
 
     ngOnInit() {
         this.setCurrentAction();
-        this.buildResourceForm();
         this.loadResource();
     }
 
@@ -63,7 +62,7 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
         return 'Edição';
     }
 
-    protected setCurrentAction() {
+    public setCurrentAction() {
         this.currentAction = this.route.snapshot.url[0].path;
     }
 
@@ -106,13 +105,13 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
 
     protected actionsForSuccess(resource: T) {
         const message = `Solicitação processada com sucesso`;
-        const route = this.route.parent.url[0].path;
+        // const route = this.route.parent.url.value[0].path;
 
         toastr.success(message);
-        this.router.navigateByUrl(route, { skipLocationChange: true })
-            .then(
-                () => this.router.navigate([route, 'edit', resource.id])
-            );
+        // this.router.navigateByUrl(route, { skipLocationChange: true })
+        //     .then(
+        //         () => this.router.navigate([route, 'edit', resource.id])
+        //     );
     }
 
     protected actionsForError(error: any) {
