@@ -1,7 +1,7 @@
 <app-bread-crumb
 [items]="[{text: 'Lançamentos', link: 'entries'},{text: pageTitle}]"></app-bread-crumb>
 
-<form [formGroup]="entryForm" (submit)="submitForm()">
+<form [formGroup]="resourceForm" (submit)="submitForm()">
 
   <div class="form-row">
     <div class="form-group col-md-4">
@@ -16,10 +16,10 @@
 
     <div class="form-group col-md-3">
       <label>Tipo</label><br>
-      <button class="btn btn-outline-primary" (click)="entryForm.get('type').setValue('Despesa')"
-        [ngClass]="{'active': entryForm.get('type').value == 'Despesa'}">Despesa</button>
-      <button class="btn btn-outline-primary" (click)="entryForm.get('type').setValue('Receita')"
-        [ngClass]="{'active': entryForm.get('type').value == 'Receita'}">Receita</button>
+      <button class="btn btn-outline-primary" (click)="resourceForm.get('type').setValue('Despesa')"
+        [ngClass]="{'active': resourceForm.get('type').value == 'Despesa'}">Despesa</button>
+      <button class="btn btn-outline-primary" (click)="resourceForm.get('type').setValue('Receita')"
+        [ngClass]="{'active': resourceForm.get('type').value == 'Receita'}">Receita</button>
     </div>
   </div>
 
@@ -36,10 +36,10 @@
 
     <div class="form-group col-md-3">
       <label>Situação</label><br>
-      <button class="btn btn-outline-primary" (click)="entryForm.get('paid').setValue(true)"
-        [ngClass]="{'active': entryForm.get('paid').value == true}">Pago</button>
-      <button class="btn btn-outline-primary" (click)="entryForm.get('paid').setValue(false)"
-        [ngClass]="{'active': entryForm.get('paid').value == false}">Pendente</button>
+      <button class="btn btn-outline-primary" (click)="resourceForm.get('paid').setValue(true)"
+        [ngClass]="{'active': resourceForm.get('paid').value == true}">Pago</button>
+      <button class="btn btn-outline-primary" (click)="resourceForm.get('paid').setValue(false)"
+        [ngClass]="{'active': resourceForm.get('paid').value == false}">Pendente</button>
     </div>
 
     <div class="form-group col-md-3">
@@ -52,4 +52,4 @@
 
 </form>
 
-<button class="btn btn-success" [disabled]="formSubmitting || entryForm.invalid" (click)="submitForm()">Salvar</button>
+<button class="btn btn-success" [disabled]="submittingForm || resourceForm.invalid" (click)="submitForm()">Salvar</button>

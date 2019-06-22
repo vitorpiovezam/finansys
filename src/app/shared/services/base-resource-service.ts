@@ -20,7 +20,6 @@ export abstract class BaseResourceService<T extends BaseResourceModel> {
         return this.http.get(this.apiPath).pipe(
             map(this.jsonDataToResources.bind(this)),
             catchError(this.handleError),
-
         );
     }
 
