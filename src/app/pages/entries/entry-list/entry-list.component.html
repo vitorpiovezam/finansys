@@ -20,7 +20,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let entry of entries">
+    <tr *ngFor="let entry of items">
       <td>
           <strong>{{ entry.name }}</strong><br>
           <small class="text-success">{{ entry.date }}</small><br>
@@ -29,7 +29,7 @@
       </td>
       <td>
         <button class="btn btn-primary mr-2" [routerLink]="[ 'edit', entry.id ]">Editar</button>
-        <button (click)="deleteCategory(category)" type="button" class="btn btn-danger">Remover</button>
+        <button (click)="deleteResource(category)" type="button" class="btn btn-danger">Remover</button>
       </td>
     </tr>
   </tbody>
