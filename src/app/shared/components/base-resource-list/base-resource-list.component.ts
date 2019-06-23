@@ -2,32 +2,27 @@ import { Component, OnInit } from '@angular/core';
 import { BaseResourceModel } from '../../models/base-resource-model';
 import { BaseResourceService } from '../../services/base-resource-service';
 
-@Component({
-  selector: 'app-base-resource-list',
-  templateUrl: './base-resource-list.component.html',
-  styleUrls: ['./base-resource-list.component.css']
-})
-export class BaseResourceListComponent<T extends BaseResourceModel> implements OnInit {
+export abstract class BaseResourceListComponent<T extends BaseResourceModel> implements OnInit {
 
-  public items: T[];
+  public resources: T[] = [];
 
   constructor(
-    private baseResourceService: BaseResourceService<T>
+    private resourceService: BaseResourceService<T>
   ) { }
 
   ngOnInit() {
-    this.baseResourceService.getAll().subscribe(
-      resource => this.items = resource,
+    this.resourceService.getAll().subscribe(
+      resources => this.resources = resources.sort((a, b) => b.id = a.id),
       error => alert('List Error')
     );
   }
 
-  deleteResource(resource: any) {
+  deleteResource(resource: T) {
     const mustDelete = confirm('Deseja realmente exluir este item ?');
 
     if (mustDelete) {
-      this.baseResourceService.delete(resource.id).subscribe(
-        () => this.items = this.items.filter(element => element !== resource),
+      this.resourceService.delete(resource.id).subscribe(
+        () => this.resources = this.resources.filter(element => element !== resource),
         () => alert('Error')
       );
     }

@@ -12,8 +12,7 @@ import { BaseResourceListComponent } from './components/base-resource-list/base-
     RouterModule
   ],
   declarations: [
-    BreadCrumbComponent,
-    BaseResourceListComponent
+    BreadCrumbComponent
   ],
   exports: [
     ReactiveFormsModule,
