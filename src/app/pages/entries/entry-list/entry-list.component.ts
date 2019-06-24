@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Injector } from '@angular/core';
 import { Entry } from '../shared/entry.model';
 import { EntryService } from '../shared/entry.service';
+import { BaseResourceListComponent } from 'src/app/shared/components/base-resource-list/base-resource-list.component';
 
 @Component({
   selector: 'app-entry-list',
@@ -8,27 +9,19 @@ import { EntryService } from '../shared/entry.service';
   styleUrls: ['./entry-list.component.css']
 })
 
-export class EntryListComponent implements OnInit {
+export class EntryListComponent extends BaseResourceListComponent<Entry> implements OnInit {
 
   entries: Entry[] = [];
 
-  constructor(private entryService: EntryService) { }
+  constructor(
+    injector: Injector,
+    entryService: EntryService
+    ) {
+      super(injector, entryService);
+    }
 
   ngOnInit() {
-    this.entryService.getAll().subscribe(
-      entries => this.entries = entries,
-      error => alert('List Error')
-    );
+    super.ngOnInit();
   }
 
-  deleteEntry(entry: any) {
-    const mustDelete = confirm('Deseja realmente exluir este item ?');
-
-    if (mustDelete) {
-      this.entryService.delete(entry.id).subscribe(
-        () => this.entries = this.entries.filter(element => element !== entry),
-        () => alert('Error')
-      );
-    }
-  }
 }

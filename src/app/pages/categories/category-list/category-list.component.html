@@ -20,14 +20,14 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let category of categories">
+    <tr *ngFor="let category of resources">
       <td>
           <strong>{{ category.name }}</strong><br>
           <small>{{ category.description }}</small>
       </td>
       <td>
         <button class="btn btn-primary mr-2" [routerLink]="[ 'edit', category.id ]">Editar</button>
-        <button (click)="deleteCategory(category)" type="button" class="btn btn-danger">Remover</button>
+        <button (click)="deleteResource(category)" type="button" class="btn btn-danger">Remover</button>
       </td>
     </tr>
   </tbody>
