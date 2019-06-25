@@ -1,0 +1,14 @@
+<div class="hamburguer" (click)="collapse()">
+    x
+</div>
+
+<aside class="navbar" (click)="collapse()" [ngClass]="{'--collapsed': collapsed, '--collapsed-out': !collapsed}">
+    <div class="content">
+        <div>
+            <span class="closebtn justify-right">
+                x
+            </span>
+        </div>
+        <ng-content></ng-content>
+    </div>
+</aside>

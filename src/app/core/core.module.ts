@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { HttpClientModule } from '@angular/common/http';
 import { InMemoryDatabase } from '../in-memory-database';
+import { NavigationPaneComponent } from './components/navigation-pane/navigation-pane.component';
 
 @NgModule({
   imports: [
@@ -16,7 +17,7 @@ import { InMemoryDatabase } from '../in-memory-database';
   exports: [
     BrowserModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
     ],
   declarations: []
 })

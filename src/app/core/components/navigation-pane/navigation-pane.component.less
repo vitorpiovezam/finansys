@@ -1,0 +1,71 @@
+.hamburguer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 50px;
+    height: 50px;
+    background-color: beige;
+    border: 2px gray;
+}
+
+.navbar {
+    user-select: none;
+    position: absolute;
+    width: 30%;
+    opacity: 0.8;
+    height: 100vh;
+    background: white;
+    z-index: 500;
+    display: none;
+    overflow: hidden;
+
+    .closebtn {
+        :hover {
+            cursor: pointer;
+            transform: scale(1.2);
+        }
+    }
+
+    &.--collapsed {
+        display: block;
+        overflow: visible;
+        animation: collapseIn 1.2s;
+        animation-fill-mode: forwards;
+    }
+
+    &.--collapsed-out {
+        display: block;
+        overflow: visible;
+        animation: collapseOut 1.2s;
+        animation-fill-mode: forwards;
+    }
+
+    .content {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        font-size: 43px;
+    }
+
+}
+
+@keyframes collapseIn {
+    0% {
+        left: -100%;
+    }
+
+    100% {
+        left: 0;
+    }
+}
+
+@keyframes collapseOut {
+    0% {
+        left: 0;
+    }
+
+    100% {
+        left: -100%;
+    }
+}

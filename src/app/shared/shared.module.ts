@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BreadCrumbComponent } from './components/bread-crumb/bread-crumb.component';
 import { BaseResourceListComponent } from './components/base-resource-list/base-resource-list.component';
+import { NavigationPaneComponent } from '../core/components/navigation-pane/navigation-pane.component';
 
 @NgModule({
   imports: [
@@ -12,14 +13,16 @@ import { BaseResourceListComponent } from './components/base-resource-list/base-
     RouterModule
   ],
   declarations: [
-    BreadCrumbComponent
+    BreadCrumbComponent,
+    NavigationPaneComponent
   ],
   exports: [
     ReactiveFormsModule,
     CommonModule,
     RouterModule,
     IMaskModule,
-    BreadCrumbComponent
+    BreadCrumbComponent,
+    NavigationPaneComponent
   ]
 })
 export class SharedModule { }
