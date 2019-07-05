@@ -1,18 +1,31 @@
+@animation-time-small : 0.7s;
+
 .hamburguer {
     position: fixed;
-    top: 0;
-    left: 0;
+    top: 10px;
+    left: 10px;
     width: 50px;
     height: 50px;
-    background-color: beige;
-    border: 2px gray;
+    vertical-align: middle;
+    text-align: center;
+    border-radius: 30px;
+    border: 5px solid rgba(0, 0, 255, 0.7);
+    transition: all @animation-time-small;
+
+    &:hover {
+        transform: scale(1.1);
+    }
+
+    &:active {
+        transition: 0.2s;
+        transform: scale(1)
+    }
 }
 
 .navbar {
     user-select: none;
     position: absolute;
-    width: 30%;
-    opacity: 0.8;
+    width: 50%;
     height: 100vh;
     background: white;
     z-index: 500;
@@ -29,14 +42,14 @@
     &.--collapsed {
         display: block;
         overflow: visible;
-        animation: collapseIn 1.2s;
+        animation: collapseIn @animation-time-small;
         animation-fill-mode: forwards;
     }
 
     &.--collapsed-out {
         display: block;
         overflow: visible;
-        animation: collapseOut 1.2s;
+        animation: collapseOut @animation-time-small;
         animation-fill-mode: forwards;
     }
 
@@ -46,6 +59,15 @@
         top: 50%;
         transform: translate(-50%,-50%);
         font-size: 43px;
+        font-weight: bolder;
+        text-transform: uppercase;
+
+
+        > a {
+            font-weight: bolder;
+            transition: all @animation-time-small;
+            color: purple;
+        }
     }
 
 }
